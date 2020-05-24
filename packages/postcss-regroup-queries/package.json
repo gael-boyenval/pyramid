@@ -1,0 +1,30 @@
+{
+  "name": "@pyramid/postcss-regroup-queries",
+  "version": "0.0.0",
+  "description": "a postcss plugin to regroup media queries based on comments",
+  "author": "",
+  "homepage": "",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build:declaration": "tsc --project tsconfig.build.json",
+    "build:es": "BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments",
+    "build:es:watch": "BABEL_ENV=build babel -w src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments --verbose",
+    "test": "jest --verbose false"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "dependencies": {
+    "postcss": "^7.0.30"
+  },
+  "devDependencies": {
+    "postcss-node-sass": "^2.1.8",
+    "postcss-scss": "^2.1.1"
+  }
+}
