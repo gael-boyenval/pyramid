@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "paths": {
+      "@pyramid/*": ["./node_modules/@pyramid/*/src"]
+    }
+  },
+  "exclude": ["**/*.story.*", "**/*.test.*", "dist"],
+  "include": []
+}

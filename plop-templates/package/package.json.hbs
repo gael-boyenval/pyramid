@@ -1,0 +1,24 @@
+{
+  "name": "@pyramid/{{name}}",
+  "version": "0.0.0",
+  "description": "{{description}}",
+  "author": "",
+  "homepage": "",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build:declaration": "tsc --project tsconfig.build.json",
+    "build:es": "BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments",
+    "build:es:watch": "BABEL_ENV=build babel -w src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments --verbose",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "peerDependencies": {}
+}
