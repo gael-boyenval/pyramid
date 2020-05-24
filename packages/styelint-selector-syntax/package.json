@@ -1,0 +1,33 @@
+{
+  "name": "@pyramid/stylelint-selector-syntax",
+  "version": "0.0.0",
+  "description": "a styelint plugin checks selector syntax",
+  "author": "",
+  "homepage": "",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build:declaration": "tsc --project tsconfig.build.json",
+    "build:es": "BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments",
+    "build:es:watch": "BABEL_ENV=build babel -w src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments --verbose",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "postcss-resolve-nested-selector": "^0.1.1",
+    "postcss-selector-parser": "^6.0.2",
+    "stylelint": "^13.3.3"
+  },
+  "devDependencies": {
+    "jest-preset-stylelint": "^3.0.0",
+    "postcss": "^7.0.30"
+  }
+}
