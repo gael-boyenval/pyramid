@@ -1,0 +1,45 @@
+@import '../../theme/s.theme.scss';
+
+.c-do {
+  display: flex;
+  padding: $base-main-flow-space/2 0;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  &:before {
+    display: inline-block;
+    padding-right: 8px;
+    font-size: 1.3em;
+  }
+
+  &__icon-wrapper {
+    flex: 0 0 $main-content-left-gutter;
+  }
+
+  &__icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    transform: translateY(2px);
+  }
+
+  &__icon-circle {
+    fill: $color-green-300;
+  }
+
+  &--not &__icon-circle {
+    fill: $color-red-300;
+  }
+
+  &__icon-path {
+    stroke-width: 2px;
+    stroke: $color-grey-100;
+    fill: transparent;
+  }
+
+  &__content {
+    max-width: 40em;
+  }
+}

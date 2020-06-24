@@ -1,0 +1,70 @@
+@import '../../theme/s.theme.scss';
+
+.c-left-menu {
+  $level1: map-get($left-menu, link-1);
+  padding-top: $vertical-space-after-header - map-get($level1, v-padding);
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  max-height: 100vh;
+  overflow: hidden;
+
+  &__group {
+    flex: 0 0 100%;
+    max-height: 0;
+    visibility: hidden;
+    overflow: hidden;
+    will-change: max-height;
+    transition: max-height 0.35s ease;
+    list-style: none;
+    padding-bottom: 4px;
+
+    &.is-open {
+      visibility: visible;
+      max-height: 100vh;
+    }
+  }
+
+  &__open-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex: initial;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 4px;
+    width: 24px;
+    height: 24px;
+    > svg {
+      margin: 0;
+    }
+  }
+
+  &__open-icon {
+    color: $color-grey-800;
+    display: block;
+    width: 12px;
+    height: 12px;
+    stroke-width: 1px;
+    transition: transform 0.1s ease;
+
+    &--level-1 {
+      width: 16px;
+      height: 16px;
+      stroke-width: 2px !important;
+    }
+
+    &.is-open {
+      transform: rotate(-180deg);
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 $global-left-gutter 0 0;
+  }
+}

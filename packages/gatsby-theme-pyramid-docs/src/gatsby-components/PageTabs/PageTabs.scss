@@ -1,0 +1,68 @@
+@import '../../theme/s.theme.scss';
+
+.c-page-tabs {
+  position: sticky;
+  background: $global-bg-color;
+  width: auto;
+  z-index: 1;
+  top: 0;
+  padding-left: $main-content-left-gutter;
+  padding-top: $vertical-space-after-header - map-get($tabs, item-padding-v);
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 32px;
+    background: linear-gradient(
+      $global-bg-color,
+      $global-bg-color 10%,
+      rgba($global-bg-color, 0)
+    );
+  }
+
+  &__tabs {
+    display: flex;
+    padding: 0;
+    border-bottom: solid 1px #000;
+  }
+
+  &__tab {
+    color: #000;
+    font-weight: 700;
+    display: block;
+    position: relative;
+    padding: map-get($tabs, item-padding-v) 0;
+    margin-right: $main-content-left-gutter;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 0;
+      transition: height 0.15s ease;
+    }
+
+    &.is-active,
+    &:hover {
+      text-decoration: none;
+
+      &::after {
+        background: rgba(0, 0, 0, 1);
+        height: 5px;
+        transition: height 0.15s ease;
+      }
+    }
+  }
+
+  &__flag {
+    display: inline-block;
+    margin-left: 6px;
+    transform: translateY(-0.5em);
+  }
+}

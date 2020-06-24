@@ -1,0 +1,33 @@
+{
+  "name": "@pyramid/preview-compiler",
+  "version": "0.0.0",
+  "description": "compiler to create preview pages in pyramid styleguide",
+  "author": "",
+  "homepage": "",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build:declaration": "tsc --project tsconfig.build.json",
+    "build:es": "BABEL_ENV=build babel src --root-mode upward --out-dir lib --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments",
+    "build:es:watch": "BABEL_ENV=build babel -w src --root-mode upward --out-dir lib --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments --verbose",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "chokidar": "^3.4.0",
+    "clear": "^0.1.0",
+    "figlet": "^1.4.0",
+    "glob": "^7.1.6",
+    "live-server": "^1.2.1",
+    "postcss": "^7.0.29",
+    "postcss-scss": "^2.0.0"
+  }
+}

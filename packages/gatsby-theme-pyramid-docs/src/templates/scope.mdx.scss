@@ -1,0 +1,156 @@
+@import '../theme/s.theme.scss';
+
+.s-mdx {
+  margin-top: 54px;
+
+  .t-heading-2,
+  .t-heading-3,
+  .t-heading-4,
+  p,
+  blockquote {
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  > .t-heading-2,
+  > .t-heading-3,
+  > .t-heading-4,
+  > p,
+  > .c-color,
+  > ul,
+  > ol {
+    margin-left: $main-content-left-gutter;
+  }
+
+  .t-heading-2 {
+    margin-top: $base-main-flow-space * 2.5;
+    margin-bottom: $base-main-flow-space;
+  }
+
+  .t-heading-3 {
+    margin-top: $base-main-flow-space * 2;
+    margin-bottom: $base-main-flow-space;
+  }
+
+  .t-heading-4 {
+    margin-top: $base-main-flow-space * 1.5;
+    margin-bottom: $base-main-flow-space;
+  }
+
+  .t-heading-2,
+  .t-heading-3,
+  .t-heading-4 {
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  [class^='t-heading-'] + [class^='t-heading-'] {
+    margin-top: $base-main-flow-space * 1.25;
+  }
+
+  table {
+    max-width: 80%;
+    border-collapse: collapse;
+    font-size: $fs-100;
+    margin-top: $base-main-flow-space * 1.5;
+    margin-bottom: $base-main-flow-space * 1.5;
+
+    td:first-child,
+    th:first-child {
+      padding-left: $main-content-left-gutter;
+    }
+
+    td:last-child,
+    th:last-child {
+      padding-right: $main-content-left-gutter;
+    }
+
+    tr {
+      border-bottom: 1px solid $color-grey-400;
+    }
+
+    th {
+      border-bottom: 2px solid $color-grey-800;
+      padding: 16px;
+      text-align: left;
+      font-size: $fs-050;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 16px;
+      vertical-align: middle;
+    }
+  }
+
+  blockquote {
+    margin-left: 0;
+    position: relative;
+    padding: 32px $main-content-left-gutter * 2;
+    font-size: $fs-300;
+    font-weight: 300;
+    background: $color-grey-200;
+    font-style: italic;
+
+    &:before {
+      content: 'ʽ';
+      display: inline-block;
+      position: absolute;
+      left: 6px;
+      line-height: 1;
+      top: 16px;
+
+      font-size: 120px;
+      color: $color-grey-300;
+    }
+
+    > * {
+      margin-left: 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    cite {
+      font-size: $fs-100;
+      font-style: normal;
+    }
+  }
+
+  p {
+    max-width: 40em;
+  }
+
+  ul {
+    padding-left: $main-content-left-gutter;
+  }
+
+  hr {
+    display: block;
+    height: 6px;
+    margin: $base-main-flow-space * 2 $main-content-left-gutter;
+    width: 48px;
+    background-color: $color-grey-800;
+    border: 0;
+  }
+
+  p,
+  ul,
+  ol,
+  bloquote,
+  .c-download,
+  .c-code {
+    margin-top: 0;
+    margin-bottom: $base-main-flow-space;
+  }
+
+  .c-color {
+    margin-bottom: $base-main-flow-space;
+  }
+}

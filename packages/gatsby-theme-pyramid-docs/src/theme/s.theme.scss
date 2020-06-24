@@ -1,0 +1,126 @@
+$color-grey-100: #fff;
+$color-grey-200: #f2f2f2;
+$color-grey-300: #dedede;
+$color-grey-400: #b5b5b5;
+$color-grey-500: #898989;
+$color-grey-600: #6e6e6e;
+$color-grey-700: #2e2e2e;
+$color-grey-800: #000;
+
+$color-red-300: #be8070;
+$color-red-600: #a85d4a;
+
+$color-orange-300: #dba848;
+$color-orange-600: #b28431;
+
+$color-blue-500: #2d5883;
+$color-blue-300: #4eb4f4;
+
+$color-green-300: #9ab763;
+$color-green-600: #516e2c;
+
+$fs-025: 10px;
+$fs-050: 12px;
+$fs-100: 14px;
+$fs-200: 16px;
+$fs-300: 18px;
+$fs-400: 22px;
+$fs-500: 24px;
+$fs-600: 32px;
+$fs-700: 52px;
+$fs-800: 71px;
+
+$global-font-familly: unquote(
+  "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
+);
+
+$global-font-size: $fs-200;
+$global-line-height: 1.5;
+$global-bg-color: $color-grey-100;
+
+$default-font-color: $color-grey-800;
+$default-link-color: $color-grey-800;
+$hilight-active-path-color: yellow;
+$hilight-active-path-color-reverted: yellow;
+
+$main-content-left-gutter: 28px;
+$vertical-space-after-header: 48px;
+$global-left-gutter: 36px;
+$base-main-flow-space: 24px;
+
+$scroll-bar-thumb: $color-grey-400;
+$scroll-bar-thumb-hover: $color-grey-600;
+$scroll-bar-track: $color-grey-100;
+$scroll-bar-track-hover: $color-grey-200;
+
+$code: (
+  block-bg-color: $color-grey-200,
+  line-number-color: $color-grey-400,
+  text-base-color: $color-grey-700,
+  text-base-fs: $fs-050,
+  text-base-lh: 1.5,
+  font-familly:
+    unquote("Consolas, 'Liberation Mono', Menlo, Courier, monospace"),
+  copy-code-fs: $fs-025,
+);
+
+// color vars
+$code-colors: (
+  blue: #183691,
+  teal: #0086b3,
+  black: #333,
+  purple: #a71d5d,
+  maroon: #a71d5d,
+  green: #63a35c,
+  light-gray: #f7f7f7,
+  dark-gray: #969896,
+);
+
+$header: (
+  bg: $color-grey-800,
+  color: $color-grey-100,
+  height: 84px,
+);
+
+$left-menu: (
+  link-color: $color-grey-800,
+  group-bottom-padding: 36px,
+  hilight-path-border-width: 5px,
+  link-1: (
+    v-padding: 0,
+    l-padding: 0,
+    fs: $fs-100,
+    fw: 700,
+  ),
+  link-2: (
+    v-padding: 0,
+    l-padding: 0,
+    fs: $fs-200,
+    fw: 400,
+  ),
+  link-3: (
+    v-padding: 0,
+    l-padding: 8px,
+    fs: $fs-100,
+    fw: 400,
+  ),
+);
+
+$tabs: (
+  item-padding-v: 12px,
+);
+
+$pop-hover: (
+  arrow-size: 6px,
+  space-between-arrow-and-trigger: 4px,
+  bg: $color-grey-100,
+  bdr-color: $color-grey-300,
+  bdr-width: 1px,
+  max-width: 380px,
+  min-width: 180px,
+  max-height: 400px,
+  fs: $fs-100,
+  bdr-radius: 12px,
+  shadow: unquote('0 0 8px #{rgba($color-grey-800, 0.1)}'),
+);

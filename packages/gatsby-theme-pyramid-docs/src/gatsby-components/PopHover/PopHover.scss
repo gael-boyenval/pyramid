@@ -1,0 +1,145 @@
+@import '../../theme/s.theme.scss';
+
+.c-pop-hover-wrapper {
+  display: inline-flex;
+  margin: 0;
+}
+
+.c-pop-hover-root {
+  pointer-events: none;
+  position: fixed;
+  overflow: visible;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@function get($key) {
+  @return map-get($pop-hover, $key);
+}
+
+.c-pop-hover {
+  pointer-events: none;
+  position: absolute;
+  overflow: visible;
+  z-index: 2;
+  display: inline-block;
+
+  &__infos-wrapper {
+    position: relative;
+    pointer-events: initial;
+
+    // arrow layout
+    &:after,
+    &:before {
+      content: '';
+      z-index: 1;
+      display: block;
+      position: absolute;
+      border-style: solid;
+      height: 0px;
+      width: 0px;
+    }
+
+    &:after {
+      box-shadow: none;
+      z-index: 2;
+    }
+  }
+
+  // arrow positions variations
+
+  &--top &__infos-wrapper {
+    padding-bottom: get('arrow-size') + get('space-between-arrow-and-trigger');
+
+    &:after,
+    &:before {
+      border-color: get('bdr-color') transparent;
+      border-width: get('arrow-size') get('arrow-size') 0px get('arrow-size');
+      bottom: get('space-between-arrow-and-trigger');
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &:after {
+      bottom: get('space-between-arrow-and-trigger') + get('bdr-width');
+      border-color: get('bg') transparent;
+    }
+  }
+
+  &--bottom &__infos-wrapper {
+    padding-top: get('arrow-size') + get('space-between-arrow-and-trigger');
+
+    &:after,
+    &:before {
+      border-color: get('bdr-color') transparent;
+      border-width: 0px get('arrow-size') get('arrow-size') get('arrow-size');
+      top: get('space-between-arrow-and-trigger');
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &:after {
+      top: get('space-between-arrow-and-trigger') + get('bdr-width');
+      border-color: get('bg') transparent;
+    }
+  }
+
+  &--right &__infos-wrapper {
+    padding-left: get('arrow-size') + get('space-between-arrow-and-trigger');
+
+    &:after,
+    &:before {
+      border-color: transparent get('bdr-color');
+      border-width: get('arrow-size') get('arrow-size') get('arrow-size') 0px;
+      left: get('space-between-arrow-and-trigger');
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:after {
+      left: get('space-between-arrow-and-trigger') + get('bdr-width');
+      border-color: transparent get('bg');
+    }
+  }
+
+  &--left &__infos-wrapper {
+    padding-right: get('arrow-size') + get('space-between-arrow-and-trigger');
+
+    &:after,
+    &:before {
+      border-color: transparent get('bdr-color');
+      border-width: get('arrow-size') 0px get('arrow-size') get('arrow-size');
+      right: get('space-between-arrow-and-trigger');
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:after {
+      right: get('space-between-arrow-and-trigger') + get('bdr-width');
+      border-color: transparent get('bg');
+    }
+  }
+
+  &__infos {
+    position: relative;
+    z-index: 0;
+    overflow: auto;
+    min-width: get('min-width');
+    max-height: get('max-height');
+    max-width: get('max-width');
+    font-size: get('fs');
+    box-shadow: get('shadow');
+    border: solid get('bdr-width') get('bdr-color');
+    background-color: get('bg');
+    border-radius: get('bdr-radius');
+  }
+
+  // transparent zone that superpose to the trigger
+  // used to keep hover state when displaying
+  &__ghost-zone {
+    pointer-events: initial;
+    position: absolute;
+  }
+}

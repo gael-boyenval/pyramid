@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/watchCommand.ts"],"names":["config"],"mappings":";;;;;;;AAAA;;AACA;;;;eAEe,oBAAMA,mBAAN,C","sourcesContent":["import watch from './watch';\nimport config from './initialize';\n\nexport default watch(config);\n"],"file":"watchCommand.js"}

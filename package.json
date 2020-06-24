@@ -10,10 +10,8 @@
   },
   "scripts": {
     "postinstall": "lerna link",
-    "prebuild": "run-p tsc lint",
-    "build": "lerna run --parallel 'build:es'",
-    "build:old": "lerna exec --parallel 'BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments'",
-    "postbuild": "yarn build:declarations",
+    "build": "lerna run --parallel --no-bail 'build:es'",
+    "postbuild": "lerna run --parallel --no-bail 'build:declaration'",
     "cm": "git-cz",
     "fix": "run-p -c 'lint:* --fix'",
     "lint:ts": "eslint 'packages/**/*.ts{,x}'",

@@ -1,0 +1,189 @@
+@import '../../theme/s.theme.scss';
+
+.c-code {
+  font-size: map-get($code, 'text-base-fs');
+  line-height: map-get($code, 'text-base-lh');
+  color: map-get($code, 'text-base-color');
+  margin: 1rem 0;
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__file-name {
+    font-family: map-get($code, 'font-familly');
+    padding: 8px 0 8px $main-content-left-gutter;
+    font-size: $fs-025;
+    letter-spacing: 0.05em;
+    border-top: solid 1px map-get($code, 'block-bg-color');
+  }
+
+  &__code-block {
+    font-family: map-get($code, 'font-familly');
+    max-width: 100%;
+    overflow: auto;
+    margin: 0;
+    white-space: pre-wrap;
+  }
+
+  &__pre {
+    margin: 0;
+    position: auto;
+    padding: 1rem 0;
+  }
+
+  &__copy-btn {
+    font-size: map-get($code, 'copy-code-fs');
+    background: map-get($code, 'block-bg-color');
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: none;
+    border: none;
+    position: absolute;
+    right: 8px;
+    top: 6px;
+    outline: none;
+    padding: 0.1rem;
+  }
+
+  &__line {
+    $line-number-padding: 10px;
+    $highlight-border-width: 5px;
+    min-height: 1em;
+    padding: 0 $line-number-padding;
+
+    &--numbered::before {
+      content: attr(ln);
+      display: inline-block;
+      width: $main-content-left-gutter - $line-number-padding;
+      overflow: hidden;
+      font-size: 0.8em;
+      opacity: 0.3;
+    }
+
+    &--highlight {
+      background-color: rgba($color-grey-100, 0.6);
+      border-left: $highlight-border-width solid map-get($code-colors, green);
+      border-right: 1px solid map-get($code, block-bg-color);
+      padding: 0 $line-number-padding - $highlight-border-width;
+    }
+  }
+}
+
+/**
+* xonokai theme for JavaScript, CSS and HTML
+* based on: https://github.com/MoOx/sass-prism-theme-base by Maxime Thirouin ~ MoOx --> http://moox.fr/ , which is Loosely based on Monokai textmate theme by http://www.monokai.nl/
+* license: MIT; http://moox.mit-license.org/
+*/
+/**
+ * Github-like theme for Prism.js
+ * @author Luke Askew http://github.com/lukeaskew
+ */
+
+// color vars
+$code-colors: (
+  blue: #183691,
+  teal: #0086b3,
+  black: #333,
+  purple: #a71d5d,
+  maroon: #a71d5d,
+  green: #63a35c,
+  dark-gray: #969896,
+);
+
+// base
+code,
+code[class*='language-'],
+pre[class*='language-'] {
+  color: map-get($code-colors, black);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  tab-size: 2;
+  hyphens: none;
+  direction: ltr;
+  cursor: text;
+}
+
+// code blocks
+pre[class*='language-'] {
+  overflow: auto;
+}
+
+p code,
+li code,
+table code {
+  margin: 0;
+  border-radius: 3px;
+  padding: 0.2em 0;
+
+  &:before,
+  &:after {
+    letter-spacing: -0.2em;
+    content: '\00a0';
+  }
+}
+
+code,
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+  background: map-get($code, 'block-bg-color');
+}
+
+// inline code
+:not(pre) > code[class*='language-'] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+}
+
+// token colors
+.token {
+  &.comment,
+  &.prolog,
+  &.doctype,
+  &.cdata {
+    color: map-get($code-colors, dark-gray);
+  }
+
+  &.punctuation,
+  &.string,
+  &.atrule,
+  &.attr-value {
+    color: map-get($code-colors, blue);
+  }
+
+  &.property,
+  &.tag {
+    color: map-get($code-colors, green);
+  }
+
+  &.boolean,
+  &.number {
+    color: map-get($code-colors, teal);
+  }
+
+  &.selector,
+  &.attr-name,
+  &.attr-value .punctuation:first-child,
+  &.keyword,
+  &.regex,
+  &.important {
+    color: map-get($code-colors, maroon);
+  }
+
+  &.operator,
+  &.entity,
+  &.url,
+  .language-css &.string {
+    color: map-get($code-colors, purple);
+  }
+
+  &.entity {
+    cursor: help;
+  }
+}
+
+.namespace {
+  opacity: 0.7;
+}

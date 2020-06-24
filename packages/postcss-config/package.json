@@ -1,0 +1,33 @@
+{
+  "name": "@pyramid/postcss-config",
+  "version": "0.0.0",
+  "description": "a configurable postcss plugin list for pyramid framework",
+  "author": "gael-boyenval (gaelboyenval@icloud.com)",
+  "homepage": "",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build:declaration": "tsc --project tsconfig.build.json",
+    "build:es": "BABEL_ENV=build babel src --root-mode upward --out-dir lib --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments",
+    "build:es:watch": "BABEL_ENV=build babel -w src --root-mode upward --out-dir lib --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments --verbose",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "dependencies": {
+    "postcss-csso": "^4.0.0",
+    "postcss-node-sass": "^2.1.8",
+    "postcss-reporter": "^6.0.1",
+    "stylelint": "^13.5.0"
+  },
+  "devDependencies": {
+    "@types/postcss-reporter": "^6.0.0",
+    "@types/stylelint": "^9.10.1"
+  }
+}

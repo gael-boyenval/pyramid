@@ -1,0 +1,57 @@
+@import '../../theme/s.theme.scss';
+
+.c-dodont {
+  display: flex;
+
+  &__block {
+    flex: 0 0 50%;
+    align-self: stretch;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: $main-content-left-gutter / 2;
+
+    &:nth-child(even) {
+      padding-right: $main-content-left-gutter;
+    }
+
+    &:nth-child(odd) {
+      padding-left: $main-content-left-gutter;
+    }
+  }
+
+  &__example {
+    flex: 1;
+    padding: $main-content-left-gutter / 2;
+    position: relative;
+    border: solid 1px $color-grey-300;
+    border-top: solid 4px $color-green-300;
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+
+    .c-dodont__block--not & {
+      border-top-color: $color-red-300;
+    }
+  }
+
+  &__icon {
+    z-index: 1;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__text {
+    flex: initial;
+    font-weight: 700;
+    margin-top: 10px;
+    line-height: 1.35;
+
+    &::first-letter  {
+      text-transform: uppercase;
+    }
+  }
+}

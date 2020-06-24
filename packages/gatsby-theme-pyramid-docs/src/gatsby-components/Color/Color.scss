@@ -1,0 +1,28 @@
+@import '../../theme/s.theme.scss';
+
+.c-color {
+  display: inline-flex;
+  padding: 0;
+
+  // require aditional wrapper for pophover
+  &__content {
+    display: inline-flex;
+    margin-bottom: 0;
+    align-content: stretch;
+  }
+
+  &__color {
+    flex: 0 0 48px;
+    width: 48px;
+  }
+
+  &__label {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: $fs-050;
+    display: inline-block;
+    padding: 3px 12px;
+    border: solid 1px $color-grey-200;
+    border-left: none;
+  }
+}

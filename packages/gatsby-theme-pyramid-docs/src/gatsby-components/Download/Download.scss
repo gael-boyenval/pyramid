@@ -1,0 +1,50 @@
+@import '../../theme/s.theme.scss';
+
+.c-download {
+  &__wrapper {
+    display: inline-flex;
+    align-items: flex-end;
+    background: $color-grey-200;
+    padding: 12px;
+    padding-left: $main-content-left-gutter;
+  }
+
+  &__content {
+    padding-right: 16px;
+    align-self: center;
+    flex: 1;
+    width: 25em;
+
+    :last-child {
+      margin-bottom: 0;
+    }
+
+    :first-child {
+      margin-top: 0;
+    }
+  }
+
+  &__button {
+    font-size: $fs-050;
+    display: inline-flex;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    background: $color-grey-800;
+    color: $color-grey-100;
+    padding: 6px 12px 6px 8px;
+
+    &:hover {
+      text-decoration: none;
+      background-color: $color-grey-700;
+    }
+  }
+
+  &__icon {
+    stroke: $color-grey-100;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    transform: translateY(1px);
+  }
+}

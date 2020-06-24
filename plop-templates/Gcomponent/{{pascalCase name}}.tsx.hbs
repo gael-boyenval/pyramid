@@ -1,0 +1,16 @@
+import React from 'react';
+import './{{pascalCase name}}.scss';
+
+const {{pascalCase name}}: React.FC<{{pascalCase name}}Props> = ({
+  propname,
+}): JSX.Element => (
+  <div className="c-{{dashCase name}}">{{pascalCase name}}</div>
+);
+
+interface {{pascalCase name}}Props {
+  propname: string;
+}
+
+{{pascalCase name}}.displayName = '{{pascalCase name}}';
+
+export default {{pascalCase name}};

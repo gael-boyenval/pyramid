@@ -1,0 +1,35 @@
+@import '../../theme/s.theme.scss';
+
+.t-heading-1 {
+  font-weight: 700;
+  font-size: $fs-700;
+  max-width: 15em;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.t-heading-2 {
+  font-weight: 700;
+  font-size: $fs-600;
+  max-width: 20em;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.t-heading-3 {
+  font-weight: 500;
+  font-size: $fs-500;
+  max-width: 23em;
+  margin: 0;
+  line-height: 1.35;
+}
+
+.t-heading-4 {
+  font-weight: 700;
+  font-size: $fs-100;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  max-width: 30em;
+  margin: 0;
+  line-height: 1.5;
+}

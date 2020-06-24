@@ -1,0 +1,28 @@
+@import '../../theme/s.theme.scss';
+
+.c-inline-code {
+  font-size: map-get($code, 'text-base-fs');
+  line-height: map-get($code, 'text-base-lh');
+  color: map-get($code, 'text-base-color');
+  font-family: map-get($code, 'font-familly');
+  background: map-get($code, 'block-bg-color');
+  position: relative;
+  padding: 1px 5px 2px;
+  cursor: pointer;
+
+  &__copied {
+    font-family: $global-font-familly;
+    display: inline-block;
+    padding: 1px 5px 2px;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.025em;
+    line-height: 1;
+    position: absolute;
+    background-color: $color-grey-800;
+    color: #fff;
+    bottom: 80%;
+    right: -10px;
+  }
+}

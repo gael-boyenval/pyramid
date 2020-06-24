@@ -23,4 +23,25 @@ module.exports = (plop) => {
       },
     ],
   });
+
+  // controller generator
+  plop.setGenerator('gcomponent', {
+    description: 'create a new gatsby component within gatsby-doc',
+    prompts: [
+      {
+        type: 'input',
+        name: 'name',
+        message: 'component name please',
+      },
+    ],
+    actions: [
+      {
+        type: 'addMany',
+        destination:
+          'packages/gatsby-theme-pyramid-docs/src/gatsby-components/{{pascalCase name}}',
+        templateFiles: 'plop-templates/Gcomponent/**/*',
+        base: 'plop-templates/Gcomponent/',
+      },
+    ],
+  });
 };

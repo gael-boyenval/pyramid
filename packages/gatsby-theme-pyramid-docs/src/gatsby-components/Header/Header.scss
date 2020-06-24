@@ -1,0 +1,96 @@
+@import '../../theme/s.theme.scss';
+
+.c-header {
+  background-color: map-get($header, bg);
+  color: map-get($header, color);
+  min-height: map-get($header, height);
+  font-family: $global-font-familly;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 $global-left-gutter;
+
+  &__logo {
+    justify-self: flex-start;
+    flex: 1;
+  }
+
+  &__logo-version {
+    display: inline-block;
+    margin-left: $global-left-gutter / 4;
+    font-weight: 200;
+    font-size: $fs-100;
+  }
+
+  &__logo-link {
+    font-weight: 700;
+    font-size: $fs-300;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: map-get($header, 'color');
+    text-decoration: none;
+  }
+
+  &__nav {
+    color: #fff;
+    padding-right: $global-left-gutter;
+  }
+
+  &__nav-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+
+  &__nav-link {
+    font-weight: 600;
+    color: map-get($header, 'color');
+    text-decoration: none;
+    display: block;
+    padding: $global-left-gutter / 4;
+
+    &--active {
+      color: $hilight-active-path-color-reverted;
+    }
+  }
+
+  &__search-btn {
+    font-weight: 200;
+    font-size: $fs-200;
+    color: #fff;
+    padding: $global-left-gutter / 4 16px $global-left-gutter / 4 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  &__search-icon {
+    height: 16px;
+    width: 16px;
+    stroke: $color-grey-100;
+    stroke-width: 1px;
+    margin-right: 6px;
+    transform: translateY(2px);
+    fill: none;
+  }
+
+  &__search-layout {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 100vh;
+    max-width: 100vw;
+    overflow: hidden;
+
+    background: map-get($header, bg);
+
+    @supports (backdrop-filter: blur(12px)) {
+      background: rgba(map-get($header, bg), 0.8);
+      backdrop-filter: blur(12px);
+    }
+  }
+}

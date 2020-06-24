@@ -1,0 +1,57 @@
+@import '../../theme/s.theme.scss';
+
+.c-color-infos {
+  &__tips-header {
+    padding: 18px;
+  }
+
+  &__title {
+    font-size: $fs-400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+
+  &__values {
+    font-size: $fs-050;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin-bottom: 0;
+  }
+
+  &__values-items {
+    display: inline-block;
+    font-weight: bold;
+
+    &:first-child {
+      border-right: 1px solid $color-grey-700;
+      padding-right: 16px;
+    }
+
+    &:last-child {
+      padding-left: 16px;
+    }
+  }
+
+  &__platforms {
+    display: flex;
+    border-bottom: solid 1px $color-grey-200;
+    padding: 8px 18px;
+    font-size: $fs-050;
+  }
+
+  &__platform-name {
+    flex: 0 0 60px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__variable {
+    flex: 1;
+    margin: 0;
+    background: $color-grey-200;
+    padding: 0 8px;
+  }
+}

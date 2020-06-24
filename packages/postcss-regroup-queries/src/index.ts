@@ -1,5 +1,5 @@
 import postcss from 'postcss';
-import list from 'postcss/lib/list';
+import { list } from 'postcss';
 
 let startPacking = false;
 let queries = {};
@@ -147,7 +147,7 @@ function addToAtRules(node: postcss.AtRule): void {
   node.remove();
 }
 
-module.exports = postcss.plugin(
+export default postcss.plugin(
   'pyramid',
   (options: {}) => (root: postcss.Root): void => {
     const opts = {
