@@ -19,10 +19,10 @@ const Portal = ({ children }) => {
 
 const PopHover: React.FC<PopHoverProps> = ({
   children,
-  Infos,
+  Content,
   popSide = 'auto',
 }): JSX.Element => {
-  const content = useRef(null);
+  const trigger = useRef(null);
   const [side, setSide] = useState('top');
   const [elementsPosition, setElementsPosition] = useState({});
   const [isRootHover, setIsRootHover] = useState(false);
@@ -52,6 +52,7 @@ const PopHover: React.FC<PopHoverProps> = ({
   // either the source component or the tooltip
   useEffect(() => {
     if (!position) return;
+
     popSide === 'auto'
       ? setSide(defineBestSide(position, window.innerHeight, window.innerWidth))
       : setSide(popSide);
@@ -66,22 +67,22 @@ const PopHover: React.FC<PopHoverProps> = ({
   // add bounding positions of trigger element
   // to state when component mount
   useEffect(() => {
-    setPosition(content.current.getBoundingClientRect());
+    setPosition(trigger.current.getBoundingClientRect());
   }, []);
 
   // trigger position computations when hovering
   // either the source component or the tooltip
   useEffect(() => {
-    setPosition(content.current.getBoundingClientRect());
+    setPosition(trigger.current.getBoundingClientRect());
   }, [isRootHover, isPopHover]);
 
-  return Infos ? (
+  return Content ? (
     <>
       <div
         onMouseOver={() => setIsRootHover(true)}
         onFocus={() => setIsRootHover(true)}
         onBlur={() => setIsRootHover(false)}
-        ref={content}
+        ref={trigger}
         className="c-pop-hover-wrapper"
         tabIndex={0}
         aria-describedby="tooltip"
@@ -108,9 +109,9 @@ const PopHover: React.FC<PopHoverProps> = ({
               style={elementsPosition[side].ghost}
             ></div>
 
-            <div className="c-pop-hover__infos-wrapper">
-              <div className="c-pop-hover__infos">
-                <Infos />
+            <div className="c-pop-hover__tooltip">
+              <div className="c-pop-hover__tooltip-content">
+                <Content />
               </div>
             </div>
           </div>
@@ -124,7 +125,7 @@ const PopHover: React.FC<PopHoverProps> = ({
 
 interface PopHoverProps {
   children: React.ReactNode;
-  Infos?: React.ReactNode;
+  Content?: React.ReactNode;
   popSide?: 'auto' | 'top' | 'bottom' | 'left' | 'right';
 }
 

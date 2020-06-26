@@ -4,3 +4,5 @@ dist
 .vscode
 .idea
 coverage
+.cache
+packages/gatsby-theme-pyramid-docs/public

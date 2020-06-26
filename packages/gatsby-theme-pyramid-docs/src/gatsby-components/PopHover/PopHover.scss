@@ -26,7 +26,7 @@
   z-index: 2;
   display: inline-block;
 
-  &__infos-wrapper {
+  &__tooltip {
     position: relative;
     pointer-events: initial;
 
@@ -49,8 +49,7 @@
   }
 
   // arrow positions variations
-
-  &--top &__infos-wrapper {
+  &--top &__tooltip {
     padding-bottom: get('arrow-size') + get('space-between-arrow-and-trigger');
 
     &:after,
@@ -68,7 +67,7 @@
     }
   }
 
-  &--bottom &__infos-wrapper {
+  &--bottom &__tooltip {
     padding-top: get('arrow-size') + get('space-between-arrow-and-trigger');
 
     &:after,
@@ -86,7 +85,7 @@
     }
   }
 
-  &--right &__infos-wrapper {
+  &--right &__tooltip {
     padding-left: get('arrow-size') + get('space-between-arrow-and-trigger');
 
     &:after,
@@ -104,7 +103,7 @@
     }
   }
 
-  &--left &__infos-wrapper {
+  &--left &__tooltip {
     padding-right: get('arrow-size') + get('space-between-arrow-and-trigger');
 
     &:after,
@@ -122,7 +121,7 @@
     }
   }
 
-  &__infos {
+  &__tooltip-content {
     position: relative;
     z-index: 0;
     overflow: auto;

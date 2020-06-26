@@ -11,7 +11,7 @@ const Color: React.FC<ColorProps> = ({
 }): JSX.Element => (
   <div className="c-color">
     <PopHover
-      Infos={() => (
+      Content={() => (
         <ColorInfo
           colorName={colorName}
           rgbVal={rgbVal}

@@ -1,0 +1,241 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PopHover /> Should allow manually setting side 1`] = `
+<PopHover
+  Content={[Function]}
+  popSide="left"
+>
+  <div
+    aria-describedby="tooltip"
+    className="c-pop-hover-wrapper"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onMouseOver={[Function]}
+    tabIndex={0}
+  >
+    <div
+      className="trigger"
+    >
+      TRIGGER
+    </div>
+  </div>
+  <Portal>
+    <Portal
+      containerInfo={
+        <div>
+          <div
+            class="c-pop-hover c-pop-hover--left is-visible"
+            id="tooltip"
+            role="tooltip"
+            style="top: 150px; transform: translateY(-50%); right: 800px; padding-right: 100px;"
+          >
+            <div
+              class="c-pop-hover__ghost-zone"
+              style="top: 50%; right: 0px; transform: translateY(-50%); width: 130px; height: 120px;"
+            />
+            <div
+              class="c-pop-hover__tooltip"
+            >
+              <div
+                class="c-pop-hover__tooltip-content"
+              >
+                <span
+                  class="tooltip"
+                >
+                  TOOLTIP CONTENT
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <div
+        className="c-pop-hover c-pop-hover--left is-visible"
+        id="tooltip"
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+        role="tooltip"
+        style={
+          Object {
+            "paddingRight": 100,
+            "right": 800,
+            "top": 150,
+            "transform": "translateY(-50%)",
+          }
+        }
+      >
+        <div
+          className="c-pop-hover__ghost-zone"
+          style={
+            Object {
+              "height": 120,
+              "right": 0,
+              "top": "50%",
+              "transform": "translateY(-50%)",
+              "width": 130,
+            }
+          }
+        />
+        <div
+          className="c-pop-hover__tooltip"
+        >
+          <div
+            className="c-pop-hover__tooltip-content"
+          >
+            <Content>
+              <span
+                className="tooltip"
+              >
+                TOOLTIP CONTENT
+              </span>
+            </Content>
+          </div>
+        </div>
+      </div>
+    </Portal>
+  </Portal>
+</PopHover>
+`;
+
+exports[`<PopHover /> Should render hide the tooltip when mouseleave the tooltip 1`] = `
+<PopHover
+  Content={[Function]}
+  popSide="auto"
+>
+  <div
+    aria-describedby="tooltip"
+    className="c-pop-hover-wrapper"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onMouseOver={[Function]}
+    tabIndex={0}
+  >
+    <div
+      className="trigger"
+    >
+      TRIGGER
+    </div>
+  </div>
+</PopHover>
+`;
+
+exports[`<PopHover /> Should render the tooltip when mouseover the trigger 1`] = `
+<PopHover
+  Content={[Function]}
+  popSide="auto"
+>
+  <div
+    aria-describedby="tooltip"
+    className="c-pop-hover-wrapper"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onMouseOver={[Function]}
+    tabIndex={0}
+  >
+    <div
+      className="trigger"
+    >
+      TRIGGER
+    </div>
+  </div>
+  <Portal>
+    <Portal
+      containerInfo={
+        <div>
+          <div
+            class="c-pop-hover c-pop-hover--right is-visible"
+            id="tooltip"
+            role="tooltip"
+            style="top: 0px; transform: translateY(-50%); left: 0px; padding-left: 0px;"
+          >
+            <div
+              class="c-pop-hover__ghost-zone"
+              style="top: 50%; left: 0px; transform: translateY(-50%); width: 30px; height: 20px;"
+            />
+            <div
+              class="c-pop-hover__tooltip"
+            >
+              <div
+                class="c-pop-hover__tooltip-content"
+              >
+                <span
+                  class="tooltip"
+                >
+                  TOOLTIP CONTENT
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <div
+        className="c-pop-hover c-pop-hover--right is-visible"
+        id="tooltip"
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+        role="tooltip"
+        style={
+          Object {
+            "left": 0,
+            "paddingLeft": 0,
+            "top": 0,
+            "transform": "translateY(-50%)",
+          }
+        }
+      >
+        <div
+          className="c-pop-hover__ghost-zone"
+          style={
+            Object {
+              "height": 20,
+              "left": 0,
+              "top": "50%",
+              "transform": "translateY(-50%)",
+              "width": 30,
+            }
+          }
+        />
+        <div
+          className="c-pop-hover__tooltip"
+        >
+          <div
+            className="c-pop-hover__tooltip-content"
+          >
+            <Content>
+              <span
+                className="tooltip"
+              >
+                TOOLTIP CONTENT
+              </span>
+            </Content>
+          </div>
+        </div>
+      </div>
+    </Portal>
+  </Portal>
+</PopHover>
+`;
+
+exports[`<PopHover /> Should render the trigger only at first 1`] = `
+<PopHover
+  Content={[Function]}
+  popSide="auto"
+>
+  <div
+    aria-describedby="tooltip"
+    className="c-pop-hover-wrapper"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onMouseOver={[Function]}
+    tabIndex={0}
+  >
+    <div
+      className="trigger"
+    >
+      TRIGGER
+    </div>
+  </div>
+</PopHover>
+`;
