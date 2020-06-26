@@ -8,16 +8,17 @@ import { CSSTransition } from 'react-transition-group';
 
 import './Menu.scss';
 
-const getTopLevelSubItems = (siteMapData, location) =>
-  parseLocation(siteMapData, location).find(
+const getTopLevelSubItems = (siteMapData, location) => {
+  console.log(parseLocation(siteMapData, location));
+
+  const currentTopLevel = parseLocation(siteMapData, location).find(
     (item) => item.isPartOfCurrentlocation,
-  ).content;
+  );
+
+  return currentTopLevel?.content || [];
+};
 
 class Menu extends Component {
-  static propTypes = {
-    siteTitle: PropTypes.string.isRequired,
-  };
-
   constructor(props) {
     super(props);
 
@@ -43,7 +44,9 @@ class Menu extends Component {
         return item;
       });
 
-    this.setState({ menuArray: setOpenItems(this.state.menuArray) });
+    this.setState({
+      menuArray: setOpenItems(this.state.menuArray),
+    });
   };
 
   closeMenu = (dirPath) => {
@@ -65,62 +68,65 @@ class Menu extends Component {
 
   buildMenu = (menuArray, isOpened = true) => (
     <ul className={classNames('c-left-menu__group', { 'is-open': isOpened })}>
-      {menuArray.map((item) => {
-        return (
-          <li key={item.dirPath}>
-            <div className="c-left-menu__item">
-              <MenuItem
-                to={item.slug}
-                content={item.title}
-                level={item.level}
-                isPartOfCurrentlocation={item.isPartOfCurrentlocation}
-              />
-              {item.content.length > 0 && (
-                <button
-                  className="c-left-menu__open-btn"
-                  onClick={
-                    item.isOpened
-                      ? () => this.closeMenu(item.dirPath)
-                      : () => this.openMenu(item.dirPath)
-                  }
-                >
-                  <svg
-                    className={classNames('c-left-menu__open-icon', {
-                      'is-open': item.isOpened,
-                      'c-left-menu__open-icon--level-1': item.level - 1 === 1,
-                    })}
-                    viewBox="0 0 20 20"
-                    vectorEffect="non-scaling-stroke"
+      {menuArray.length &&
+        menuArray.map((item) => {
+          return (
+            <li key={item.dirPath}>
+              <div className="c-left-menu__item">
+                <MenuItem
+                  to={item.slug}
+                  content={item.title}
+                  level={item.level}
+                  isPartOfCurrentlocation={item.isPartOfCurrentlocation}
+                />
+                {item.content.length > 0 && (
+                  <button
+                    className="c-left-menu__open-btn"
+                    onClick={
+                      item.isOpened
+                        ? () => this.closeMenu(item.dirPath)
+                        : () => this.openMenu(item.dirPath)
+                    }
                   >
-                    <polyline
-                      stroke="currentColor"
-                      fill="transparent"
-                      points="17.9,6.5 10,14.4 2.1,6.5"
-                    />
-                  </svg>
-                </button>
+                    <svg
+                      className={classNames('c-left-menu__open-icon', {
+                        'is-open': item.isOpened,
+                        'c-left-menu__open-icon--level-1': item.level - 1 === 1,
+                      })}
+                      viewBox="0 0 20 20"
+                      vectorEffect="non-scaling-stroke"
+                    >
+                      <polyline
+                        stroke="currentColor"
+                        fill="transparent"
+                        points="17.9,6.5 10,14.4 2.1,6.5"
+                      />
+                    </svg>
+                  </button>
+                )}
+              </div>
+              {item.content.length > 0 && (
+                <CSSTransition
+                  in={isOpened}
+                  timeout={350}
+                  classNames="is-open"
+                  unmountOnExit
+                >
+                  {this.buildMenu(item.content, item.isOpened)}
+                </CSSTransition>
               )}
-            </div>
-            {item.content.length > 0 && (
-              <CSSTransition
-                in={isOpened}
-                timeout={350}
-                classNames="is-open"
-                unmountOnExit
-              >
-                {this.buildMenu(item.content, item.isOpened)}
-              </CSSTransition>
-            )}
-          </li>
-        );
-      })}
+            </li>
+          );
+        })}
     </ul>
   );
   render() {
     return (
-      <aside className="c-left-menu">
-        {this.buildMenu(this.state.menuArray, true)}
-      </aside>
+      !!this.state.menuArray.length && (
+        <aside className="c-left-menu">
+          {this.buildMenu(this.state.menuArray, true)}
+        </aside>
+      )
     );
   }
 }
