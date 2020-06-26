@@ -1,0 +1,27 @@
+{
+  "name": "@pyramid/www-pyramid",
+  "version": "0.0.0",
+  "description": "the pyramid website",
+  "author": "",
+  "homepage": "",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build:declaration": "tsc --project tsconfig.build.json",
+    "build:es": "BABEL_ENV=build babel src --root-mode upward --out-dir lib --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments",
+    "build:es:watch": "BABEL_ENV=build babel -w src --root-mode upward --out-dir lib --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments --verbose",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "dependencies": {
+    "@pyramid/gatsby-theme-pyramid-docs": "^0.0.0",
+    "gatsby": "^2.23.11"
+  }
+}

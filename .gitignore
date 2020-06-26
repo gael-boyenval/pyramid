@@ -5,4 +5,4 @@ dist
 .idea
 coverage
 .cache
-packages/gatsby-theme-pyramid-docs/public
+packages/**/public
