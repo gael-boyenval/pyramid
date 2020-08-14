@@ -1,6 +1,6 @@
 const path = require('path');
 
-module.exports = {
+module.exports = (options) => ({
   siteMetadata: {
     title: 'Mozaic',
   },
@@ -26,15 +26,14 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `src`,
-        path: path.join('src'),
-        ignore: [`**/Previews/*.*`, `*.previews.*`], // ignore files starting with a dot
+        path: path.join('src', options.libPath || 'lib'),
       },
     },
     'gatsby-transformer-json',
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
-        extensions: [`.mdx`],
+        extensions: [`.md`],
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-autolink-headers',
@@ -109,4 +108,4 @@ module.exports = {
       },
     },
   ],
-};
+});

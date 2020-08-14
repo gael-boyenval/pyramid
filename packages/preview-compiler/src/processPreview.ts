@@ -1,4 +1,4 @@
-import postcssconfig from '@pyramid/compiler/lib/compiler';
+import postcssconfig from '@pyramid/postcss-config';
 import postcss from 'postcss';
 import { readFile, readdir, writeFile } from 'fs/promises';
 import path from 'path';
@@ -46,6 +46,8 @@ const processCSS = (
 const handleHtml = (filename: string, directory: string): Promise<string> =>
   new Promise((resolve, reject) => {
     const filePath = `${directory}/${filename}`;
+    console.log('html : ' + filePath);
+
     readFile(filePath, 'utf8')
       .then((content) => resolve(content))
       .catch((err) => reject(err));
@@ -54,6 +56,7 @@ const handleHtml = (filename: string, directory: string): Promise<string> =>
 const handleSCSS = (filename: string, directory: string): Promise<string> =>
   new Promise((resolve, reject) => {
     const filePath = `${directory}/${filename}`;
+    console.log('scss : ' + filePath);
     readFile(filePath, 'utf8').then((content) =>
       processCSS(filePath, filePath, content)
         .then((result) => resolve(result.css))
@@ -62,17 +65,19 @@ const handleSCSS = (filename: string, directory: string): Promise<string> =>
   });
 
 const handleJS = (filename: string, directory: string): Promise<string> =>
-  new Promise((resolve, reject) => {
+  new Promise((resolve) => {
     const filePath = `${directory}/${filename}`;
     readFile(filePath, 'utf8')
       .then((content) => resolve(content))
-      .catch((err) => reject(err));
+      .catch((err) => resolve(''));
   });
 
 const handleFiles = (files: string[], directory: string) => {
   const htmlFile = files.find((file) => file.endsWith('.html'));
   const scssFile = files.find((file) => file.endsWith('.scss'));
   const jsFile = files.find((file) => file.endsWith('.js'));
+  console.log(htmlFile);
+  console.log(files);
 
   return Promise.all([
     handleHtml(htmlFile, directory),
@@ -102,8 +107,12 @@ const getRelatedFiles = async (filePath: string): Promise<string> => {
 const processPreview = (
   parsedPath: ParsedPath,
   filePath: string,
-): Promise<void> =>
-  createFullPath(parsedPath.writeDir)
+): Promise<void> => {
+  console.log('-----------------------------');
+  console.log(parsedPath);
+  console.log('-----------------------------');
+
+  return createFullPath(parsedPath.writeDir)
     .then(() => getRelatedFiles(filePath))
     .then((content) => {
       return writeFile(
@@ -114,5 +123,6 @@ const processPreview = (
     .catch((err) => {
       throw console.error(err);
     });
+};
 
 export default processPreview;

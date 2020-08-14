@@ -8,9 +8,10 @@ const build = (opts: {}): void => {
   createFullPath(`${config.basePath}/${config.distPath}`);
 
   glob
-    .sync(`${config.basePath}/${config.srcPath}/**/previews/*.preview.html`)
+    .sync(`${config.basePath}/${config.srcPath}/**/_previews/*.html`)
     .forEach((filePath) => {
       const parsedPath = parsePath(config, filePath);
+      console.log(parsedPath);
       buildPreview(parsedPath, filePath);
     });
 };

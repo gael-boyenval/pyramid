@@ -29,11 +29,7 @@ export const Icon = ({ not, className }) => (
         />
       </>
     ) : (
-      <path
-        id="Tracé_8"
-        className="c-do__icon-path"
-        d="M5.3,8.8l3.9,5l6.2-8.2"
-      />
+      <path className="c-do__icon-path" d="M5.3,8.8l3.9,5l6.2-8.2" />
     )}
   </svg>
 );

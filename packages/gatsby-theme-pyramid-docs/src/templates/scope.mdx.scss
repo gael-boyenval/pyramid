@@ -145,12 +145,16 @@
   ol,
   bloquote,
   .c-download,
-  .c-code {
+  > .c-code {
     margin-top: 0;
     margin-bottom: $base-main-flow-space;
   }
 
   .c-color {
     margin-bottom: $base-main-flow-space;
+  }
+
+  .c-highlight {
+    margin-bottom: $base-main-flow-space * 1.5;
   }
 }

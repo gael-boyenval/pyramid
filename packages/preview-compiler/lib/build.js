@@ -1,36 +1,27 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, '__esModule', {
-  value: true,
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
 exports.default = void 0;
 
-var _glob = _interopRequireDefault(require('glob'));
+var _glob = _interopRequireDefault(require("glob"));
 
-var _processPreview = _interopRequireDefault(require('./processPreview'));
+var _processPreview = _interopRequireDefault(require("./processPreview"));
 
-var _fsUtils = require('./fsUtils');
+var _fsUtils = require("./fsUtils");
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var build = function build(opts) {
+var build = opts => {
   var config = opts;
-  (0, _fsUtils.createFullPath)(
-    ''.concat(config.basePath, '/').concat(config.distPath),
-  );
+  (0, _fsUtils.createFullPath)("".concat(config.basePath, "/").concat(config.distPath));
 
-  _glob.default
-    .sync(
-      ''
-        .concat(config.basePath, '/')
-        .concat(config.srcPath, '/**/previews/*.preview.html'),
-    )
-    .forEach(function (filePath) {
-      var parsedPath = (0, _fsUtils.parsePath)(config, filePath);
-      (0, _processPreview.default)(parsedPath, filePath);
-    });
+  _glob.default.sync("".concat(config.basePath, "/").concat(config.srcPath, "/**/_previews/*.html")).forEach(filePath => {
+    var parsedPath = (0, _fsUtils.parsePath)(config, filePath);
+    console.log(parsedPath);
+    (0, _processPreview.default)(parsedPath, filePath);
+  });
 };
 
 var _default = build;

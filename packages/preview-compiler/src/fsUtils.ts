@@ -6,9 +6,10 @@ import { Config } from './initialize';
 export const createWriteDir = (config: Config, filepath: string) => {
   const removedLastPreview = path
     .dirname(filepath)
-    .split('/')
+    .replace(/_/gi, '')
+    .split(path.sep)
     .filter((i) => i !== 'previews')
-    .join('/');
+    .join(path.sep);
 
   const distPath = removedLastPreview
     .replace(config.srcPath, config.distPath)
@@ -28,10 +29,7 @@ export interface ParsedPath {
 }
 
 export const parsePath = (config: Config, filepath: string) => ({
-  previewName: path
-    .basename(filepath)
-    .replace('.preview.', '.')
-    .replace(path.extname(filepath), ''),
+  previewName: path.basename(filepath).replace(path.extname(filepath), ''),
   dirname: path.resolve(config.basePath, path.dirname(filepath)),
   writeDir: createWriteDir(config, filepath),
   ext: path.extname(filepath),

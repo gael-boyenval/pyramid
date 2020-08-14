@@ -1,0 +1,46 @@
+@import '../../theme/s.theme.scss';
+
+.c-highlight {
+  border: solid 1px;
+  border-left-width: map-get($highlight, border-left-width);
+  padding: 16px 16px 16px $main-content-left-gutter -
+    map-get($highlight, border-left-width);
+
+  &--tips {
+    border-color: map-get($highlight, color-tips);
+    box-shadow: map-get($highlight, shadow-style)
+      map-get($highlight, color-tips-shadow);
+  }
+
+  &--warn {
+    border-color: map-get($highlight, color-warning);
+    box-shadow: map-get($highlight, shadow-style)
+      map-get($highlight, color-warning-shadow);
+  }
+
+  &--info {
+    border-color: map-get($highlight, color-info);
+    box-shadow: map-get($highlight, shadow-style)
+      map-get($highlight, color-info-shadow);
+  }
+
+  &__title {
+    font-size: $fs-025;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+
+  &__content {
+    > :first-child {
+      margin-top: 0;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+}

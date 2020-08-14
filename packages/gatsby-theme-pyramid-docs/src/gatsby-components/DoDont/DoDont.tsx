@@ -4,10 +4,22 @@ import './DoDont.scss';
 
 import { Icon } from '../Do';
 
-const DoDont = ({ children }) => <div className="c-dodont">{children}</div>;
+const DoDont = ({ children, full = false }) => (
+  <div
+    className={cx('c-dodont', {
+      'c-dodont--full': full,
+    })}
+  >
+    {children}
+  </div>
+);
 
 export const DoDontBlock = ({ children, text, not = false }) => (
-  <div className={cx('c-dodont__block', { 'c-dodont__block--not': not })}>
+  <div
+    className={cx('c-dodont__block', {
+      'c-dodont__block--not': not,
+    })}
+  >
     <div className="c-dodont__example">
       <Icon not={not} className="c-dodont__icon" />
       {children}

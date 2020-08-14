@@ -21,29 +21,29 @@ import DesignerKitLink from './DesignerKitLink';
 import Header from './Header';
 import { H2, H3, H4 } from './Typography';
 
-const shortcodes = {
-  Download,
-  Color,
-  Swatch,
-  Do,
-  DoDont,
-  DoDontBlock,
-  IconViewer,
-  DesignerKitLink,
-  Highlight,
-  pre: Code,
-  code: Code,
-  inlineCode: InlineCode,
-  h1: H2,
-  h2: H2,
-  h3: H3,
-  h4: H4,
-};
-
 const Layout = ({ children, location }) => {
   const Preview = withLocationPreview(location);
-  shortcodes.Preview = Preview;
-  shortcodes.SubContents = SubContents(location);
+
+  const shortcodes = {
+    SubContents: SubContents(location),
+    Preview,
+    Download,
+    Color,
+    Swatch,
+    Do,
+    DoDont,
+    DoDontBlock,
+    IconViewer,
+    DesignerKitLink,
+    Highlight,
+    pre: Code,
+    code: Code,
+    inlineCode: InlineCode,
+    h1: H2,
+    h2: H2,
+    h3: H3,
+    h4: H4,
+  };
 
   return (
     <StaticQuery

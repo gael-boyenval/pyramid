@@ -1,7 +1,7 @@
 import baseConfig from '@pyramid/stylelint-selector-syntax/lib/defaultConfig';
 
 export default {
-  plugins: ['@pyramid/stylelintPlugin'],
+  plugins: ['@pyramid/stylelint-selector-syntax'],
   rules: {
     'at-rule-blacklist': ['extend'],
     'at-rule-name-case': 'lower',

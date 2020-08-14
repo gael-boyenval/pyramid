@@ -1,66 +1,30 @@
 import React, { PureComponent } from 'react';
-import styled, { css } from 'styled-components';
+import cx from 'classnames';
 
 import PreviewCodeSample from './PreviewCodeSample';
 import PreviewToolBar from './PreviewToolBar';
 import PreviewFrame from './PreviewFrame';
 
-import tokensObject from '@mozaic-ds/tokens/build/js/tokensObject.js';
-
 import copyToClipboard from '../../utils/copy-to-clipboard';
 
 let viewPorts = {};
 
-Object.keys(tokensObject.screen).map(
+const tokensObject = {
+  screen: {
+    xl: '1280px',
+    l: '1024px',
+    m: '720px',
+    s: '380px',
+    xs: '320px',
+  },
+};
+
+Object.keys(tokensObject.screen).forEach(
   (screenName) =>
     (viewPorts[screenName] = Number(
-      tokensObject.screen[screenName].value.replace('px', ''),
+      tokensObject.screen[screenName].replace('px', ''),
     )),
 );
-
-const PreviewContainer = styled.div`
-  ${({ fullScreen }) =>
-    fullScreen
-      ? css`
-          position: fixed;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          background-color: white;
-          z-index: 2;
-        `
-      : css`
-          position: relative;
-        `};
-`;
-const Container = styled.div`
-  display: flex;
-  height: 100%;
-`;
-const Left = styled.div`
-  flex: 0 0 70%;
-  max-width: 70%;
-  display: flex;
-  flex-flow: column nowrap;
-  background: #f5f5f5;
-`;
-const Right = styled.div`
-  flex: 0 0 30%;
-  max-width: 30%;
-  min-width: 30%;
-  display: flex;
-  flex-flow: column nowrap;
-`;
-
-const Body = styled.div`
-  position: relative;
-  flex: 1;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 
 export class PreviewComponent extends PureComponent {
   constructor(props) {
@@ -126,6 +90,8 @@ export class PreviewComponent extends PureComponent {
       showMore,
       open,
       nude,
+      codes,
+      url,
       toggleOptions,
     } = this.props;
 
@@ -135,64 +101,58 @@ export class PreviewComponent extends PureComponent {
       copyCompatible,
       availableWidth,
     } = this.state;
-    if (this.props.data === undefined) {
-      return <div />;
-    }
-    const iframeSrc =
-      this.props.data.node.previewPath && this.state.location
-        ? `${
-            this.state.location.origin
-          }/previews/${this.props.data.node.previewPath
-            .split('docs/')
-            .pop()}.html`
-        : '';
 
-    const ViewPortsObj = viewPorts;
-    const preview = this.props.data.node.codes;
     return (
-      <PreviewContainer fullScreen={fullScreen}>
-        {fullScreen === true ? (
-          <Container>
-            <Left>
+      <div
+        className={cx('c-preview', {
+          'c-preview--fullscreen': fullScreen,
+          'c-preview--with-options': !nude,
+        })}
+      >
+        {fullScreen ? (
+          <div className="c-preview__inner-container">
+            <div className="c-preview__left-column">
               <PreviewToolBar
                 fullScreen={fullScreen}
                 availableWidth={availableWidth}
                 toggleFullScreen={toggleFullScreen}
                 viewport={viewport}
-                viewPorts={ViewPortsObj}
+                viewPorts={viewPorts}
                 changeViewPort={changeViewPort}
                 showGrid={showGrid}
                 grid={grid}
-                iframeSrc={iframeSrc}
+                iframeSrc={url}
               />
-              <Body ref={(body) => (this.body = body)}>
+              <div
+                className="c-preview__body"
+                ref={(body) => (this.body = body)}
+              >
                 <PreviewFrame
                   availableWidth={availableWidth}
                   viewport={viewport}
-                  viewPorts={ViewPortsObj}
+                  viewPorts={viewPorts}
                   fullScreen={fullScreen}
                   data={this.props.data}
                   grid={grid}
                   showGrid={showGrid}
-                  iframeSrc={iframeSrc}
+                  iframeSrc={url}
                 />
-              </Body>
-            </Left>
-            <Right>
+              </div>
+            </div>
+            <div className="c-preview__right-column">
               <PreviewCodeSample
                 fullScreen={fullScreen}
-                preview={preview}
+                preview={codes}
                 showCode={this.showCode}
                 currentCodeSample={currentCodeSample}
                 copied={copied}
                 copyCompatible={copyCompatible}
                 copyCodeToClipBoard={this.copyCodeToClipBoard}
-                getLanguage={this.getLanguage}
                 open={open}
                 showMore={showMore}
               />
-            </Right>
-          </Container>
+            </div>
+          </div>
         ) : (
           <div ref={this.contRef} style={{ margin: '2rem 0' }}>
             {!nude && (
@@ -201,29 +161,29 @@ export class PreviewComponent extends PureComponent {
                 availableWidth={availableWidth}
                 toggleFullScreen={toggleFullScreen}
                 viewport={viewport}
-                viewPorts={ViewPortsObj}
+                viewPorts={viewPorts}
                 changeViewPort={changeViewPort}
                 showGrid={showGrid}
                 grid={grid}
-                iframeSrc={iframeSrc}
+                iframeSrc={url}
               />
             )}
             <PreviewFrame
               availableWidth={availableWidth}
               viewport={viewport}
-              viewPorts={ViewPortsObj}
+              viewPorts={viewPorts}
               fullScreen={fullScreen}
               data={this.props.data}
               grid={grid}
               toggleOptions={toggleOptions}
               nude={nude}
-              iframeSrc={iframeSrc}
+              iframeSrc={url}
             />
 
             {!nude && (
               <PreviewCodeSample
                 fullScreen={fullScreen}
-                preview={preview}
+                preview={codes}
                 showCode={this.showCode}
                 currentCodeSample={currentCodeSample}
                 copied={copied}
@@ -236,7 +196,7 @@ export class PreviewComponent extends PureComponent {
             )}
           </div>
         )}
-      </PreviewContainer>
+      </div>
     );
   }
 }

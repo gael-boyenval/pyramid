@@ -1,1 +1,1 @@
-{"version":3,"sources":["../src/buildCommand.ts"],"names":["config"],"mappings":";;;;;;;AAAA;;AACA;;;;eAEe,oBAAMA,mBAAN,C","sourcesContent":["import config from './lib/initialize';\nimport build from './lib/build';\n\nexport default build(config);\n"],"file":"buildCommand.js"}
+{"version":3,"sources":["../src/buildCommand.ts"],"names":["config"],"mappings":"AAAA;;;;;;;;AACA;;AACA;;;;eAEe,oBAAMA,mBAAN,C","sourcesContent":["#!/usr/bin/env node\nimport config from './initialize';\nimport build from './build';\n\nexport default build(config);\n"],"file":"buildCommand.js"}

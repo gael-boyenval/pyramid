@@ -14,7 +14,8 @@
   }
 
   &__left-menu {
-    flex: 0 0 360px;
+    flex: initial;
+    max-width: 380px;
     max-height: calc(100vh - #{map-get($header, 'height')});
     overflow-y: auto;
   }

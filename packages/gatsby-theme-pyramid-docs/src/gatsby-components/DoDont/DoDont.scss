@@ -3,6 +3,10 @@
 .c-dodont {
   display: flex;
 
+  &--full {
+    flex-wrap: wrap;
+  }
+
   &__block {
     flex: 0 0 50%;
     align-self: stretch;
@@ -17,11 +21,17 @@
     &:nth-child(odd) {
       padding-left: $main-content-left-gutter;
     }
+
+    .c-dodont--full & {
+      flex: 0 0 100%;
+      padding: 0 $main-content-left-gutter;
+      margin-top: $base-main-flow-space * 1.5;
+    }
   }
 
   &__example {
     flex: 1;
-    padding: $main-content-left-gutter / 2;
+    padding: 32px 12px 12px 12px;
     position: relative;
     border: solid 1px $color-grey-300;
     border-top: solid 4px $color-green-300;
@@ -33,21 +43,38 @@
     .c-dodont__block--not & {
       border-top-color: $color-red-300;
     }
+
+    &:after {
+      display: block;
+      position: absolute;
+      content: 'DO';
+      font-weight: bold;
+      top: 8px;
+      left: 36px;
+      font-size: 10px;
+      line-height: 14px;
+      color: $color-green-300;
+    }
+
+    .c-dodont__block--not &:after {
+      color: $color-red-300;
+      content: 'DON’T';
+    }
   }
 
   &__icon {
-    z-index: 1;
     position: absolute;
-    top: 8px;
-    left: 8px;
+    top: 6px;
+    left: 12px;
     width: 16px;
     height: 16px;
+    overflow: visible;
   }
 
   &__text {
     flex: initial;
     font-weight: 700;
-    margin-top: 10px;
+    margin-top: 8px;
     line-height: 1.35;
 
     &::first-letter  {

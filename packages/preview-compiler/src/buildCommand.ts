@@ -1,4 +1,5 @@
-import config from './lib/initialize';
-import build from './lib/build';
+#!/usr/bin/env node
+import config from './initialize';
+import build from './build';
 
 export default build(config);

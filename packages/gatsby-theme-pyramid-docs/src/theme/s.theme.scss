@@ -14,7 +14,7 @@ $color-orange-300: #dba848;
 $color-orange-600: #b28431;
 
 $color-blue-500: #2d5883;
-$color-blue-300: #4eb4f4;
+$color-blue-300: #739bc3;
 
 $color-green-300: #9ab763;
 $color-green-600: #516e2c;
@@ -123,4 +123,15 @@ $pop-hover: (
   fs: $fs-100,
   bdr-radius: 12px,
   shadow: unquote('0 0 8px #{rgba($color-grey-800, 0.1)}'),
+);
+
+$highlight: (
+  border-left-width: 8px,
+  color-info: $color-grey-400,
+  color-info-shadow: rgba($color-grey-600, 0.1),
+  color-tips: $color-blue-300,
+  color-tips-shadow: rgba($color-blue-500, 0.1),
+  color-warning: $color-orange-300,
+  color-warning-shadow: rgba($color-orange-600, 0.1),
+  shadow-style: unquote('3px 3px 1px'),
 );

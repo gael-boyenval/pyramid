@@ -1,4 +1,4 @@
-import postcss from 'postcss';
+import * as postcss from 'postcss';
 import { list } from 'postcss';
 
 let startPacking = false;
@@ -147,14 +147,13 @@ function addToAtRules(node: postcss.AtRule): void {
   node.remove();
 }
 
-export default postcss.plugin(
-  'pyramid',
-  (options: {}) => (root: postcss.Root): void => {
-    const opts = {
-      sort: false,
-      ...options,
-    };
+const plugin = postcss.plugin('postcss-pyramid', (options) => {
+  const opts = {
+    sort: false,
+    ...options,
+  };
 
+  return (root: postcss.Root, result): void => {
     root.each((node) => {
       if (node.type === 'comment' && node.text === 'pyramid-block:start') {
         startPacking = true;
@@ -187,5 +186,7 @@ export default postcss.plugin(
         queryLists = [];
       }
     });
-  },
-);
+  };
+});
+
+export default plugin;

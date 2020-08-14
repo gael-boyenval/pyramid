@@ -1,9 +1,6 @@
-var mkdirp = require('mkdirp');
+const express = require('express');
 const path = require(`path`);
-const fs = require('fs');
 const { createFilePath } = require(`gatsby-source-filesystem`);
-
-let previewsPath = [];
 
 /**
  * gatsby api hook that will run when the development server is started
@@ -13,21 +10,86 @@ let previewsPath = [];
  *
  */
 
-exports.onCreateNode = ({ node, getNode, actions, reporter }) => {
+exports.onCreateDevServer = ({ app }) => {
+  app.use(express.static('previews'));
+};
+
+exports.onCreateNode = async (
+  { node, getNode, actions, loadNodeContent, createContentDigest, reporter },
+  options,
+) => {
   const { createNodeField } = actions;
 
+  if (
+    node.internal.type === `File` &&
+    node.relativePath.includes('/_previews/')
+  ) {
+    const file = path.parse(node.relativePath);
+    const reversedFileParents = file.dir
+      .split(path.sep)
+      .reverse()
+      .map((elem) => elem.replace(/_/gi, ''));
+
+    const id = `previews-${node.relativePath.replace(/_/gi, '')}`;
+
+    const iframePath = `${path.sep}${file.dir
+      .replace(/_/gi, '')
+      .replace(/previews/gi, '')}${file.name}.html`;
+
+    const platform = reversedFileParents[1];
+    const type = file.ext.replace('.', '');
+    const content = await loadNodeContent(node);
+    const forPattern =
+      path.sep +
+      reversedFileParents.slice(2).reverse().join(path.sep) +
+      path.sep;
+    const previewIdentifier = `${platform}.${file.name}`;
+
+    const newNode = {
+      id,
+      iframePath,
+      platform,
+      forPattern,
+      content,
+      type,
+      previewIdentifier,
+    };
+
+    actions.createNode({
+      ...newNode,
+      internal: {
+        type: `preview`,
+        contentDigest: createContentDigest(newNode),
+      },
+    });
+  }
+
   if (node.internal.type === `Mdx`) {
-    const slug = createFilePath({ node, getNode, basePath: `docs` });
+    const slug = createFilePath({ node, getNode, basePath: `lib` });
     const fileName = path.basename(node.fileAbsolutePath);
 
     const keywords = `${slug.split('/').join(', ')}, ${
       node.frontmatter.searchKeywords
     }`;
 
+    const patternIdentifier = slug
+      .split(path.sep)
+      .filter(
+        (i) =>
+          !['scss', 'htmlscss', 'react'].some((platform) => i === platform),
+      )
+      .join(path.sep);
+
     createNodeField({
       node,
       name: `slug`,
       value: slug,
+    });
+
+    createNodeField({
+      node,
+      name: `patternIdentifier`,
+      value: patternIdentifier,
     });
 
     createNodeField({
@@ -44,7 +106,7 @@ exports.onCreateNode = ({ node, getNode, actions, reporter }) => {
   }
 };
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
+exports.createPages = async ({ graphql, actions, reporter }, options) => {
   // Destructure the createPage function from the actions object
   const { createPage } = actions;
   const result = await graphql(`
@@ -55,6 +117,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             id
             fields {
               slug
+              patternIdentifier
             }
           }
         }
@@ -74,6 +137,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       context: {
         id: node.id,
         slug: node.fields.slug,
+        patternIdentifier: node.fields.patternIdentifier,
       },
     });
   });

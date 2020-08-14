@@ -22,8 +22,8 @@ export interface Config {
 const config: Config = {
   subPath: null,
   basePath: caller,
-  srcPath: 'src/docs',
-  distPath: 'public/previews',
+  srcPath: 'src/lib',
+  distPath: 'previews',
 };
 
 export default config;

@@ -1,24 +1,24 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { graphql } from 'gatsby';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import './pattern-page.scss';
 import './scope.mdx.scss';
 
-import Container from '../gatsby-components/Container';
 import Layout from '../gatsby-components/layout';
 import StatusFlag from '../gatsby-components/StatusFlag';
 
 import PageTabs from '../gatsby-components/PageTabs';
 import TableOfContents from '../gatsby-components/TableOfContents';
 import { H1 } from '../gatsby-components/Typography';
-/*import PatternStatusGroup from '../gatsby-components/PatternStatusGroup';*/
 
 const PageContentWrapper = styled.div`
   display: flex;
   flex-direction: row;
 `;
+
+export const PreviewContext = createContext({});
 
 export default ({ data, location }) => {
   const post = data.mdx;
@@ -45,8 +45,6 @@ export default ({ data, location }) => {
   ).node.frontmatter;
   const parentTitle = parentFrontmatter.title;
   const parentDesc = parentFrontmatter.description;
-  const parentStatus = parentFrontmatter.status;
-  const mainCategory = post.fields.slug ? post.fields.slug.split('/') : [];
   const hasTabs = samePageTabs.length > 1;
 
   return (
@@ -63,7 +61,9 @@ export default ({ data, location }) => {
         <div className="c-page__body">
           {hasTabs && <PageTabs samePageTabs={samePageTabs} />}
           <div className="s-mdx">
-            <MDXRenderer>{post.body}</MDXRenderer>
+            <PreviewContext.Provider value={{ ...data.allPreview }}>
+              <MDXRenderer>{post.body}</MDXRenderer>
+            </PreviewContext.Provider>
           </div>
         </div>
         <TableOfContents
@@ -76,7 +76,7 @@ export default ({ data, location }) => {
 };
 
 export const query = graphql`
-  query MDXQuery($slug: String!) {
+  query MDXQuery($slug: String!, $patternIdentifier: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
       id
       body
@@ -117,6 +117,19 @@ export const query = graphql`
             }
           }
           excerpt
+        }
+      }
+    }
+    allPreview(filter: { forPattern: { eq: $patternIdentifier } }) {
+      edges {
+        node {
+          content
+          forPattern
+          id
+          iframePath
+          type
+          platform
+          previewIdentifier
         }
       }
     }

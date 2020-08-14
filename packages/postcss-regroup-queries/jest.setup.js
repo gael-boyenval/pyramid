@@ -1,6 +1,6 @@
 let postcss = require('postcss');
-let plugin = require('./src/index');
 const sass = require('postcss-node-sass');
+const plugin = require('./lib/index').default;
 
 async function run(input, output, pluginOpts, testOpts = 'default') {
   let config = { plugins: [plugin(pluginOpts)] };

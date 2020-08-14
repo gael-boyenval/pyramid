@@ -1,7 +1,5 @@
 module.exports = (api) => {
   api.cache(true);
-  console.log('babel config');
-
   return {
     presets: [
       [
@@ -10,6 +8,7 @@ module.exports = (api) => {
           targets: {
             browsers: '>0.25%',
             node: '8.9',
+            esmodules: true,
           },
         },
       ],

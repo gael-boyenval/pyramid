@@ -13,7 +13,7 @@ const watch = (opts: Config): void => {
 
   // watch for changes within files
   chokidar
-    .watch(`${config.basePath}/${config.srcPath}/**/previews/*.preview.*`)
+    .watch(`${config.basePath}/${config.srcPath}/**/_previews/*`)
     .on('change', (filePath) => {
       const parsedPath = parsePath(config, filePath);
       buildPreview(parsedPath, filePath);

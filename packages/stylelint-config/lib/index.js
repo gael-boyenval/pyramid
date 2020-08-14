@@ -1,17 +1,13 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, '__esModule', {
-  value: true,
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
 exports.default = void 0;
 
-var _defaultConfig = _interopRequireDefault(
-  require('@pyramid/stylelint-selector-syntax/lib/defaultConfig'),
-);
+var _defaultConfig = _interopRequireDefault(require("@pyramid/stylelint-selector-syntax/lib/defaultConfig"));
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = {
   plugins: ['@pyramid/stylelintPlugin'],
@@ -34,19 +30,13 @@ var _default = {
     'comment-whitespace-inside': 'always',
     'declaration-bang-space-after': 'never',
     'declaration-bang-space-before': 'always',
-    'declaration-block-no-duplicate-properties': [
-      true,
-      {
-        ignore: ['consecutive-duplicates'],
-      },
-    ],
-    'comment-empty-line-before': [
-      'always',
-      {
-        except: ['first-nested'],
-        ignore: ['stylelint-commands'],
-      },
-    ],
+    'declaration-block-no-duplicate-properties': [true, {
+      ignore: ['consecutive-duplicates']
+    }],
+    'comment-empty-line-before': ['always', {
+      except: ['first-nested'],
+      ignore: ['stylelint-commands']
+    }],
     'declaration-block-semicolon-newline-after': 'always',
     'declaration-block-semicolon-space-before': 'never',
     'declaration-block-single-line-max-declarations': 1,
@@ -58,7 +48,7 @@ var _default = {
       '/^transition/': ['/all/'],
       '/^background/': ['http:', 'https:'],
       '/^border/': ['none'],
-      '/.+/': ['initial'],
+      '/.+/': ['initial']
     },
     'font-family-name-quotes': 'always-where-recommended',
     'function-calc-no-unspaced-operator': true,
@@ -92,13 +82,10 @@ var _default = {
     'number-no-trailing-zeros': true,
     'property-case': 'lower',
     'property-no-vendor-prefix': true,
-    'rule-empty-line-before': [
-      'always-multi-line',
-      {
-        except: ['first-nested'],
-        ignore: ['after-comment'],
-      },
-    ],
+    'rule-empty-line-before': ['always-multi-line', {
+      except: ['first-nested'],
+      ignore: ['after-comment']
+    }],
     'selector-attribute-brackets-space-inside': 'never',
     'selector-attribute-operator-space-after': 'never',
     'selector-attribute-operator-space-before': 'never',
@@ -125,8 +112,8 @@ var _default = {
     'value-list-comma-space-after': 'always-single-line',
     'value-list-comma-space-before': 'never',
     'value-no-vendor-prefix': true,
-    'plugin/pyramid': _defaultConfig.default,
-  },
+    'plugin/pyramid': _defaultConfig.default
+  }
 };
 exports.default = _default;
 //# sourceMappingURL=index.js.map

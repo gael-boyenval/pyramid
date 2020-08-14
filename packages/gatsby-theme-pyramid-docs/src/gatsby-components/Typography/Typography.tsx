@@ -11,6 +11,7 @@ export const H1 = ({ children, className, ...rest }) => (
     {children}
   </h1>
 );
+
 export const H2 = ({ children, className, ...rest }) => (
   <h2
     className={classNames('t-heading-2', { [className]: className })}

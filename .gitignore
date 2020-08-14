@@ -6,3 +6,4 @@ dist
 coverage
 .cache
 packages/**/public
+packages/**/previews

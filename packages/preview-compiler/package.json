@@ -10,6 +10,10 @@
   "files": [
     "lib"
   ],
+  "bin": {
+    "preview-watch": "./lib/watchCommand.js",
+    "preview-build": "./lib/buildCommand.js"
+  },
   "scripts": {
     "build:declaration": "tsc --project tsconfig.build.json",
     "build:es": "BABEL_ENV=build babel src --root-mode upward --out-dir lib --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments",

@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, '__esModule', {
-  value: true,
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
 exports.default = void 0;
 
-var checkPropsValueAtBlockLevel = function checkPropsValueAtBlockLevel(node) {
+var checkPropsValueAtBlockLevel = node => {
   return node;
 };
 

@@ -1,0 +1,34 @@
+{
+  "name": "@pyramid/www",
+  "private": true,
+  "description": "pyramid website",
+  "version": "0.1.0",
+  "author": "Gaël BOYENVAL",
+  "dependencies": {
+    "@pyramid/gatsby-theme-pyramid-docs": "^0.0.0",
+    "@pyramid/preview-compiler": "^0.0.0",
+    "gatsby": "^2.23.10"
+  },
+  "devDependencies": {
+    "prettier": "2.0.5"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "clean:develop": "gatsby clean && gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "",
+    "preview:build": "preview-build",
+    "preview:watch": "preview-watch"
+  },
+  "repository": {
+    "type": "git"
+  }
+}

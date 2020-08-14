@@ -1,38 +1,29 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, '__esModule', {
-  value: true,
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
 exports.default = void 0;
 
-var _postcssResolveNestedSelector = _interopRequireDefault(
-  require('postcss-resolve-nested-selector'),
-);
+var _postcssResolveNestedSelector = _interopRequireDefault(require("postcss-resolve-nested-selector"));
 
-var _postcssSelectorParser = _interopRequireDefault(
-  require('postcss-selector-parser'),
-);
+var _postcssSelectorParser = _interopRequireDefault(require("postcss-selector-parser"));
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var selector = function selector(rule, result) {
+var selector = (rule, result) => {
   var selector = rule.selector;
   var selectorDef = [];
-  var resolvedSelector = (0, _postcssResolveNestedSelector.default)(
-    selector,
-    rule,
-  );
-  resolvedSelector.forEach(function (sel) {
+  var resolvedSelector = (0, _postcssResolveNestedSelector.default)(selector, rule);
+  resolvedSelector.forEach(sel => {
     try {
-      (0, _postcssSelectorParser.default)(function (sel) {
-        sel.each(function (selectorNode) {
+      (0, _postcssSelectorParser.default)(sel => {
+        sel.each(selectorNode => {
           var currentSelector = [];
-          selectorNode.walk(function (s) {
+          selectorNode.walk(s => {
             currentSelector.push({
               value: s.value,
-              type: s.type,
+              type: s.type
             });
           });
           selectorDef.push(currentSelector);
